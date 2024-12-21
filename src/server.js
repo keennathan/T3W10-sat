@@ -13,7 +13,7 @@ const app = express();
 // Start defining routes: instance.verb(url, middleware/callback)
 app.get('/', (req, res) => {
     res.json({
-        message:'Hello, world!'
+        message:'Hello World!'
     });
 });
 
