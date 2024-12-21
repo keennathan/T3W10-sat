@@ -10,6 +10,9 @@ const express = require('express');
 // Make an instance of the express server
 const app = express();
 
+// Buil-in middleware for server to receive JSON body data
+app.use(express.json());
+
 // Start defining routes: instance.verb(url, middleware/callback)
 app.get('/', (req, res) => {
     res.json({
@@ -17,6 +20,8 @@ app.get('/', (req, res) => {
     });
 });
 
+const UserRouter = require('./routes/users.js');
+app.use('/users', UserRouter);
 
 // Export the app
 module.exports = { 
