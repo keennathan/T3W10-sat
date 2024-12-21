@@ -18,7 +18,7 @@ describe('Root route', () => {
 
     test("Server returns a response without Auth header", async () => {
         const response = await request(app).get("/");
-        console.log(response);
+        // console.log(response);
         expect(response.headers["Authorisation"]).toBeFalsy();
     })
 });
