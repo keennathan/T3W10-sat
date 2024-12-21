@@ -16,12 +16,22 @@ app.use(express.json());
 // Start defining routes: instance.verb(url, middleware/callback)
 app.get('/', (req, res) => {
     res.json({
-        message:'Hello World!'
+        message: 'Hello World!'
     });
 });
 
 const UserRouter = require('./routes/users.js');
 app.use('/users', UserRouter);
+
+// Error-handling middleware
+app.use((error, req, res, next) => {
+    console.log("Server threw an error: " + error.message);
+    res.status(500).json({
+        status: 500,
+        error: error.message,
+        errorFull: JSON.stringify(error)
+    });
+});
 
 // Export the app
 module.exports = { 
